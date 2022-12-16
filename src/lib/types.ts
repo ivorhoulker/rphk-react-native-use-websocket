@@ -39,8 +39,14 @@ export type WebSocketMessage =
   | Blob
   | ArrayBufferView;
 
-export type SendMessage = (message: WebSocketMessage) => void;
-export type SendJsonMessage = (jsonMessage: any) => void;
+export type SendMessage = (
+  message: WebSocketMessage,
+  options?: { enqueue: boolean }
+) => void;
+export type SendJsonMessage = (
+  jsonMessage: any,
+  options?: { enqueue: boolean }
+) => void;
 
 export type Subscriber<T = WebSocketEventMap['message']> = {
   setLastMessage: (message: T) => void;
